@@ -1,0 +1,40 @@
+<div id="container">
+    <div class="jumbotron">
+
+        <h2>Acquisti del cliente</h2>
+    </div>
+    <label>Seleziona una data : </label><br>
+    <input type="date" [(ngModel)]="myDate">
+    <button (click)="cercaOrdini()">Cerca</button>
+    <button [disabled]=!canAddOrder() (click)="newOrdine()" class="btn btn-primary float-right">Nuovo Acquisto</button>
+    <br><br>
+    <table class="table table-striped">
+        <thead>
+            <th>Nome Articolo</th>
+            <th>Tipologia</th>
+            <th>Prezzo Unitario</th>
+            <th>Quantita</th>
+            <th>Prezzo Totale</th>
+            <th>Azioni</th>
+            
+
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let ordine of ordini">
+                <td>{{ordine.articolo.nomeArticolo}}</td>
+                <td>{{ordine.articolo.tipoBottiglia}}</td>
+                <td>{{ordine.articolo.prezzo}} &euro;</td>
+                <td>{{ordine.quantita}}</td>
+                <td>{{ordine.prezzoTotale}} &euro; </td>
+                <td>
+                    <button class="btn btn-success custom-width" (click)="updateOrdine(ordine)">Modifica</button>
+                    &nbsp;
+                    <button class="btn btn-danger custom-width" (click)="deleteOrdine(ordine)">Cancella</button>
+
+                </td>
+            </tr>
+            <tr *ngIf="quantitaTotale > 0 && sommaPrezzi > 0"><td><strong>Totali</strong></td><td></td><td></td><td><strong>{{quantitaTotale}} </strong></td><td><strong>{{sommaPrezzi}} &euro;</strong></td><td></td></tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,12 @@
+#container {
+    padding:20px;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: calc(100vh - 60px);
+}
+

@@ -1,0 +1,34 @@
+<div id="container">
+    <div class = "jumbotron">
+
+        <h2>Lista dei Clienti</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>CF</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>indirizzo </th>
+            <th>Acquisti</th>
+            <th>Azioni</th>
+            
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clienti">
+                <td>{{cliente.cf}}</td>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.cognome}}</td>
+                <td>{{cliente.indirizzo}}</td>
+                <td><a [routerLink]="['/ordini',cliente.id]">acquisti</a></td>
+                <td>
+                    <button class="btn btn-success custom-width" (click)="updateCliente(cliente)">Modifica</button>
+                    &nbsp;
+                    <button class="btn btn-danger custom-width" (click)="deleteCliente(cliente)">Cancella</button>
+                    
+                </td>
+            </tr>
+    </table>
+    <div class="well">
+        <button class="btn btn-primary" (click)="newCliente()">Nuovo Cliente</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+.col-sm-6 {
+
+    padding-top:20px;
+}
+
+.errorMessage {
+
+    color:red;
+
+}
+
+.is-required{
+
+ border: 1px solid red;
+}

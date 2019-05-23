@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-4 offset-sm-4">
+        <form #f="ngForm" (ngSubmit)="processForm(f)">
+            <br>
+            <div class="form group">
+                <label for="articolo">Articolo</label>
+                <select [(ngModel)]="ordine.articolo.nomeArticolo" name="articolo" #articolo="ngModel" class="form-control">
+                    <option *ngFor="let articolo of articoli" value ="{{articolo.nomeArticolo}}">{{articolo.nomeArticolo}}</option>
+                </select>
+            </div>
+            <br>
+            <div class="form group">
+                <label for="tipoBottiglia">Tipo</label>
+                <select [(ngModel)]="ordine.articolo.tipoBottiglia" name="tipoBottiglia" #tipoBottiglia="ngModel" class="form-control" >
+                    <option *ngFor="let tipoBottiglia of tipiBottiglia" value="{{tipoBottiglia}}">{{tipoBottiglia}}</option>
+                </select>
+            </div>
+             <br>
+            <div class="form group">
+                <label for="quantita">Quantita'</label>
+                <input [(ngModel)]="ordine.quantita" class="form-control"name="quantita" #quantita="ngModel" type="number"/>
+            </div>
+             <br>
+            <input *ngIf="!ordine.numeroOrdine" type="submit" value="Salva" class="btn btn-success">
+
+            <input *ngIf="ordine.numeroOrdine" type="submit" value="Aggiorna" class="btn btn-success">
+        </form>
+        <br>
+        <div *ngIf="errore" class="errore">
+            Attenzione, la quantita dell'articolo non e' disponibile!
+        </div>
+    </div>
+</div>

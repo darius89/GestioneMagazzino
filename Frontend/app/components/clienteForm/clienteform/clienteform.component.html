@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <form #f = "ngForm" (ngSubmit)="processForm(f)" class="justify-content-center">
+            <br>
+            <div class="form group">
+                <label for="cf">Codice Fiscale</label>
+                <input type="text" name="cf" #cf="ngModel" class="form-control"  [(ngModel)] = "cliente.cf" required>
+            </div>
+            <div *ngIf="cf.errors?.required && submitted" class="errorMessage">
+                inserire codice fiscale!
+            </div>
+            <br>
+            <div class="form group">
+                <label for="nome"> Nome</label>
+                <input type="text" class="form-control" name="nome" #nome="ngModel" [(ngModel)] = "cliente.nome" required>
+            </div>
+            <div *ngIf="nome.errors?.required && submitted" class="errorMessage">
+                inserire nome!
+            </div>
+            <br>
+            <div class="form group">
+                <label for="cognome">Cognome</label>
+                <input type="text"  class="form-control"  name="cognome" #cognome="ngModel" [(ngModel)] = "cliente.cognome" required>
+            </div>
+            <div *ngIf="cognome.errors?.required && submitted" class="errorMessage">
+                inserire cognome!
+            </div>
+            <br>
+            <div class="form group">
+                <label for="indirizzo">Indirizzo</label>
+                <input type="text"  class="form-control"  name="indirizzo" #indirizzo="ngModel" [(ngModel)] = "cliente.indirizzo" required>
+            </div>
+            <div *ngIf="indirizzo.errors?.required && submitted" class="errorMessage">
+                inserire indirizzo!
+            </div>
+
+            <br>
+            <input *ngIf="!cliente.id"  type="submit" value="Salva" class="btn btn-success">
+            
+            <input *ngIf="cliente.id"  type="submit" value="Aggiorna" class="btn btn-success">
+        </form>
+    </div>
+</div>

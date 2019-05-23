@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <form #f="ngForm" (ngSubmit)="processForm(f)" class="justify-content-center">
+            <br>
+            <div class="form group">
+                <label for="nomeArticolo">Nome Articolo</label>
+                <input type="text" name="nomeArticolo" #nomeArticolo="ngModel" class="form-control"
+                    [(ngModel)]="articolo.nomeArticolo" required>
+            </div>
+            <div *ngIf="nomeArticolo.errors?.required && submitted" class="errorMessage">
+                inserire nome articolo!
+            </div>
+            <br>
+            <div class="form group">
+                <label for="prezzo">Prezzo</label>
+                <input type="text" class="form-control" name="prezzo" #prezzo="ngModel" [(ngModel)]="articolo.prezzo"
+                    required>
+            </div>
+            <div *ngIf="prezzo.errors?.required && submitted" class="errorMessage">
+                inserire prezzo!
+            </div>
+            <br>
+            <div class="form group">
+                <label>Tipo Bottiglia</label>
+                <select [(ngModel)]="articolo.tipoBottiglia" name="tipoBottiglia" #tipoBottiglia="ngModel"
+                    class="form-control">
+                    <option value="Lattina">Lattina</option>
+                    <option value="Fiasco">Fiasco</option>
+                    <option value="Bottiglia">Bottiglia</option>
+                    <option value="Brik">Brik</option>
+                </select>
+            </div>
+            <div *ngIf="tipoBottiglia.errors?.required && submitted" class="errorMessage">
+                inserire tipo di bottiglia!
+            </div>
+            <br>
+            <div class="form group">
+                <label for="disponibilita">Disponibilita</label>
+                <input type="text" class="form-control" name="disponibilita" #disponibilita="ngModel"
+                    [(ngModel)]="articolo.disponibilita" required>
+            </div>
+            <div *ngIf="disponibilita.errors?.required && submitted" class="errorMessage">
+                inserire disponibilita'!
+            </div>
+
+            <br>
+            <input *ngIf="!articolo.id" type="submit" value="Salva" class="btn btn-success">
+
+            <input *ngIf="articolo.id" type="submit" value="Aggiorna" class="btn btn-success">
+        </form>
+    </div>
+</div>
