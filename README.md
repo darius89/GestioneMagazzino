@@ -3,5 +3,6 @@ gestionale con funzionalita' per un utente amministratore di un magazzino. Simpl
 
 
 Backend with Spring Framework + Hibernate
+
 Frontend with Angular 7
 
